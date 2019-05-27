@@ -49,13 +49,37 @@ function startMonitoring()
 }
 
 $(document).on('click','#repetir',function(e){
-  $("#archivo").trigger("play");
-  $("#estado").html("Reproduciendo");
-  $("#repeat").hide();
+
+  //change status on server
+  $.ajax({
+  url: 'api/player.php?action=setStatus&idCliente='+localStorage.getItem("idCliente")+'status=1',
+  async: true,
+  contentType: "application/json",
+     success: function(data) {
+       estado=1;
+       //start playing
+       var media = document.getElementById("archivo");
+       const playPromise = media.play();
+       if (playPromise !== null){
+           playPromise.catch(() => { media.play(); })
+       }
+       $("#estado").html("Reproduciendo");
+       $("#repeat").hide();
+     }
+  });
 });
 
 var aud = document.getElementById("archivo");
 aud.onended = function() {
+  //change status on server
+  $.ajax({
+  url: 'api/player.php?action=setStatus&idCliente='+localStorage.getItem("idCliente")+'status=2',
+  async: true,
+  contentType: "application/json",
+     success: function(data) {
+       estado=0;
+     }
+  });
   $("#estado").html("Finalizado");
   $("#repeat").show();
 };

@@ -14,6 +14,22 @@ contentType: "application/json",
    }
 });
 
+//get app name and logo
+$.ajax({
+url: 'api/register.php?action=getConfig',
+async: true,
+contentType: "application/json",
+   success: function(data) {
+	   var obj=JSON.parse(data);
+
+    for(var i=0;i<obj.length;i++)
+    {
+      $("#titulo").html(obj[i].appname);
+    }
+
+   }
+});
+
 
 //register button
 $(document).on('click','#register',function(e){
@@ -28,7 +44,7 @@ $(document).on('click','#register',function(e){
   async: true,
   contentType: "application/json",
      success: function(data) {
-
+       //get client id and redirect to player
         var obj=JSON.parse(data);
        localStorage.setItem("idCliente",obj);
        window.location.href="player.html";

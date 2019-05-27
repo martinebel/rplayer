@@ -14,8 +14,19 @@ switch($_REQUEST['action'])
   echo json_encode($array);
   break;
 
+  case "getConfig":
+  $stmt = $dbh->prepare("select * from config");
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+  foreach($result as $row){
+    array_push($array,array("appname"=> $row["nombre"],"logo"=>'assets/files/config/'.$row["logo"]));
+
+  }
+  echo json_encode($array);
+  break;
+
   case "register":
-  //insert register data into database
+  //insert client data into database
   $nombre=$_REQUEST["nombre"];
   $grupo=$_REQUEST["grupo"];
   $key=$_REQUEST["key"];
@@ -29,7 +40,7 @@ switch($_REQUEST['action'])
   foreach($result as $row){
   	$lastID=$row["maximo"];
   }
-  //insert into group
+  //insert client into group
   $stmt = $dbh->prepare("insert into clientexgrupo (idcliente,idgrupo,status) values ('".$lastID."','".$grupo."',0)");
   $stmt->execute();
   echo json_encode($lastID);
