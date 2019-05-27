@@ -15,7 +15,7 @@ include 'header.php';
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Administrar Grupos</h1>
+          <h1 class="h3 mb-2 text-gray-800">Detalles de Grupo</h1>
 
 
           <!-- DataTales Example -->
@@ -27,7 +27,7 @@ include 'header.php';
                   <thead>
                     <tr>
                       <th>Nombre</th>
-                      <th>Clientes</th>
+                      <th>Estado</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
