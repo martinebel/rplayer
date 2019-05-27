@@ -41,7 +41,7 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -55,13 +55,13 @@
       </div>
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="admingroups.php">
           <i class="fas fa-fw fa-cog"></i>
           <span>Administrar</span></a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="addgroup.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Crear</span></a>
       </li>
@@ -75,7 +75,7 @@
       </div>
 
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="config.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Datos</span></a>
       </li>
