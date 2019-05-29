@@ -1,8 +1,6 @@
 <?php
 include 'header.php';
 ?>
-  <!-- Custom styles for this page -->
-  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 
   <!-- Content Wrapper -->
@@ -22,6 +20,8 @@ include 'header.php';
           <div class="card shadow mb-4">
 
             <div class="card-body">
+              <a href="addgroup.php" class="btn btn-success"><i class="fas fa-fw fa-plus"></i> Crear Grupo</a>
+              <p></p>
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
@@ -32,6 +32,21 @@ include 'header.php';
                     </tr>
                   </thead>
                   <tbody>
+                    <?php
+                    $stmt = $dbh->prepare("SELECT grupo.idgrupo,grupo.nombre,count(clientexgrupo.idcliente) as clientes FROM `grupo` inner join clientexgrupo on clientexgrupo.idgrupo=grupo.idgrupo group by grupo.idgrupo,grupo.nombre");
+                    $stmt->execute();
+                    $result = $stmt->fetchAll();
+                    foreach($result as $row){
+                      echo '<tr>
+                        <td>'.$row["nombre"].'</td>
+                        <td>'.$row["clientes"].'</td>
+                        <td><a href="editgroup.php?id='.$row["idgrupo"].'" class="btn btn-secondary"><i class="fas fa-fw fa-edit"></i> Editar</a>
+                        <a href="managegroup.php?id='.$row["idgrupo"].'" class="btn btn-primary"><i class="fas fa-fw fa-cog"></i> Administrar</a></td>
+                        </tr>';
+
+
+                    }
+                     ?>
                   </tbody>
                 </table>
               </div>

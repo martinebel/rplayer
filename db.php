@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set("America/Araguaina");
 
  $requete = "SELECT * FROM config limit 1";
 global $dbh;
