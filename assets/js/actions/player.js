@@ -13,6 +13,10 @@ contentType: "application/json",
       $("#nombreGrupo").html(obj[i].nombre);
       $("#estado").html("Esperando...");
       $("#archivo").html('<source src="'+obj[i].archivo+'" type="audio/mpeg">');
+      if(obj[i].logo!=""){
+      $("body").css("background-image","url('"+obj[i].logo+"')");
+      $("body").css("background-size","contain");
+    }
       window.setInterval(function(){
       startMonitoring();
     }, 1000);
@@ -20,6 +24,8 @@ contentType: "application/json",
 
    }
 });
+
+
 
 function startMonitoring()
 {

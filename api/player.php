@@ -8,7 +8,7 @@ switch($_REQUEST['action'])
   $stmt->execute();
   $result = $stmt->fetchAll();
   foreach($result as $row){
-  	array_push($array,array("idgrupo"=> $row["idgrupo"],"nombre"=>mb_strtoupper($row["nombre"],'UTF-8'),"archivo"=>'assets/files/groups/'.$row["archivo"]));
+  	array_push($array,array("idgrupo"=> $row["idgrupo"],"nombre"=>mb_strtoupper($row["nombre"],'UTF-8'),"archivo"=>'assets/files/groups/'.$row["archivo"],"logo"=>'assets/files/groups/'.$row["imagen"]));
 
   }
   echo json_encode($array);
