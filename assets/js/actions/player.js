@@ -11,6 +11,7 @@ contentType: "application/json",
     for(var i=0;i<obj.length;i++)
     {
       $("#nombreGrupo").html(obj[i].nombre);
+      document.title=obj[i].nombre;
       $("#estado").html("Esperando...");
       $("#archivo").html('<source src="'+obj[i].archivo+'" type="audio/mpeg">');
       if(obj[i].logo!=""){
@@ -58,7 +59,7 @@ $(document).on('click','#repetir',function(e){
 
   //change status on server
   $.ajax({
-  url: 'api/player.php?action=setStatus&idCliente='+localStorage.getItem("idCliente")+'status=1',
+  url: 'api/player.php?action=setStatus&idCliente='+localStorage.getItem("idCliente")+'&status=1',
   async: true,
   contentType: "application/json",
      success: function(data) {
@@ -79,7 +80,7 @@ var aud = document.getElementById("archivo");
 aud.onended = function() {
   //change status on server
   $.ajax({
-  url: 'api/player.php?action=setStatus&idCliente='+localStorage.getItem("idCliente")+'status=2',
+  url: 'api/player.php?action=setStatus&idCliente='+localStorage.getItem("idCliente")+'&status=2',
   async: true,
   contentType: "application/json",
      success: function(data) {

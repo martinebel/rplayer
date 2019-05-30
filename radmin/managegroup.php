@@ -29,7 +29,7 @@ foreach($result as $row){
             <div class="card-body">
               <input type="hidden" id="idgrupo" value="<?php echo $_REQUEST["id"];?>">
               <a href="#" class="btn btn-secondary btn-sm reproducir-todo"><i class="fas fa-fw fa-play"></i> Reproducir Todos</a>
-              
+
               <p></p>
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -44,6 +44,9 @@ foreach($result as $row){
                   </tbody>
                 </table>
               </div>
+              <div class="alert alert-primary" role="alert" style="display:none">
+  El cliente tiene que recargar la pagina para resetear su estado
+</div>
             </div>
           </div>
 

@@ -31,5 +31,11 @@ switch($_REQUEST['action'])
   $stmt->execute();
   $result = $stmt->fetchAll();
   break;
+
+  case 'stopClient':
+  $stmt = $dbh->prepare("update clientexgrupo set  `status` =0 where idcliente='".$_REQUEST["idClient"]."'");
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+  break;
 }
 ?>

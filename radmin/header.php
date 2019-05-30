@@ -1,6 +1,13 @@
 <?php
 
 require '../db.php';
+
+$stmt = $dbh->prepare("SELECT * from config");
+$stmt->execute();
+$result = $stmt->fetchAll();
+foreach($result as $row){
+  $apptitle=$row["nombre"];
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,7 +20,7 @@ require '../db.php';
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Remote Player</title>
+  <title><?php echo $apptitle.' - Administracion'; ?></title>
 
   <!-- Custom fonts for this template-->
   <link href="../assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -34,10 +41,9 @@ require '../db.php';
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Remote Player</div>
+
+        <div class="sidebar-brand-text mx-3"><?php echo $apptitle; ?></div>
+
       </a>
 
       <!-- Divider -->

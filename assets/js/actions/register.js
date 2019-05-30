@@ -25,6 +25,7 @@ contentType: "application/json",
     for(var i=0;i<obj.length;i++)
     {
       $("#titulo").html(obj[i].appname);
+      document.title=obj[i].appname;
       if(obj[i].logo!=""){
       $("body").css("background-image","url('"+obj[i].logo+"')");
       $("body").css("background-size","contain");

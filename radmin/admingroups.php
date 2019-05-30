@@ -33,13 +33,20 @@ include 'header.php';
                   </thead>
                   <tbody>
                     <?php
-                    $stmt = $dbh->prepare("SELECT grupo.idgrupo,grupo.nombre,count(clientexgrupo.idcliente) as clientes FROM `grupo` inner join clientexgrupo on clientexgrupo.idgrupo=grupo.idgrupo group by grupo.idgrupo,grupo.nombre");
+                    $stmt = $dbh->prepare("SELECT grupo.idgrupo,grupo.nombre,coalesce(count(clientexgrupo.idcliente),0) as clientes FROM `grupo` LEFT  join clientexgrupo on clientexgrupo.idgrupo=grupo.idgrupo group by grupo.idgrupo,grupo.nombre");
                     $stmt->execute();
                     $result = $stmt->fetchAll();
                     foreach($result as $row){
+
+                      $stmt2 = $dbh->prepare("SELECT coalesce(count(clientexgrupo.idcliente),0) as total FROM `cliente` LEFT  join clientexgrupo on clientexgrupo.idcliente=cliente.idcliente where idgrupo=".$row["idgrupo"]." and fecha='".date('Y-m-d')."'");
+                      $stmt2->execute();
+                      $result2 = $stmt2->fetchAll();
+                      foreach($result2 as $row2){
+                        $totalcliente=$row2["total"];
+                      }
                       echo '<tr>
                         <td>'.$row["nombre"].'</td>
-                        <td>'.$row["clientes"].'</td>
+                        <td>'.$totalcliente.'</td>
                         <td><a href="editgroup.php?id='.$row["idgrupo"].'" class="btn btn-secondary"><i class="fas fa-fw fa-edit"></i> Editar</a>
                         <a href="managegroup.php?id='.$row["idgrupo"].'" class="btn btn-primary"><i class="fas fa-fw fa-cog"></i> Administrar</a></td>
                         </tr>';

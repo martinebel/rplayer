@@ -1,12 +1,11 @@
 <?php
 include 'header.php';
-$stmt = $dbh->prepare("SELECT * from grupo where idgrupo=".$_REQUEST['id']);
+$stmt = $dbh->prepare("SELECT * from config");
 $stmt->execute();
 $result = $stmt->fetchAll();
 foreach($result as $row){
-  $nombregrupo=$row["nombre"];
-  $imagen=$row["imagen"];
-  $archivo=$row["archivo"];
+  $nombre=$row["nombre"];
+  $imagen=$row["logo"];
 }
 ?>
 
@@ -20,7 +19,7 @@ foreach($result as $row){
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Editar Grupo: <strong><?php echo $nombregrupo; ?></strong></h1>
+          <h1 class="h3 mb-2 text-gray-800">Configuracion</strong></h1>
 
 
 
@@ -28,30 +27,16 @@ foreach($result as $row){
           <div class="card shadow mb-4">
 
             <div class="card-body">
-              <form id="formulario" action="editGroupHelper.php" method="post" enctype="multipart/form-data">
+              <form id="formulario" action="configHelper.php" method="post" enctype="multipart/form-data">
               <div class="row">
 
                   <div class="col-md-4 col-xs-12">
                     <div class="form-group">
-                      <label>Nombre del Grupo*</label>
-                      <input type="text" class="form-control form-control-user" name="nombre" value="<?php echo $nombregrupo; ?>" required>
+                      <label>Nombre*</label>
+                      <input type="text" class="form-control form-control-user" name="nombre" value="<?php echo $nombre; ?>" required>
                     </div>
                   </div>
 
-                  <div class="col-md-4 col-xs-12">
-                    <div class="form-group" id="audiogroup">
-                      <label>Archivo de Audio* <small class="text-info">Sólo .mp3</small></label>
-                      <?php if($archivo=="")
-                      {
-                        echo '<input type="file" class="form-control form-control-user" name="archivo" id="archivo" required="">';
-                      }
-                      else {
-                      echo '<p id="naudio">'.$archivo.'&nbsp;<a href="#" id="subiraudio">Cambiar</a></p>';
-                      }
-                      ?>
-
-                    </div>
-                  </div>
 
                   <div class="col-md-4 col-xs-12">
                     <div class="form-group" id="imggroup">
@@ -73,10 +58,9 @@ foreach($result as $row){
     <small><strong>Tamaño máximo de archivo: <?php echo  ini_get('post_max_size');?></strong></small>
     <br>
       <hr>
-                    <a href="admingroups.php" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">Cancelar</a>
+                    <a href="index.php" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm">Cancelar</a>
                     <input type="submit" value="Guardar" class="d-none d-sm-inline-block btn btn-sm btn-success shadow-sm float-right">
-                    <input type="hidden" name="action" value="edit">
-                    <input type="hidden" name="idgroup" value="<?php echo $_REQUEST['id']; ?>">
+
           </div>
 
               </div>
@@ -94,10 +78,7 @@ foreach($result as $row){
       include 'footer.php';
       ?>
 <script>
-  $(document).on("click","#subiraudio",function(e){
-    $("#naudio").remove();
-    $("#audiogroup").append('<input type="file" class="form-control form-control-user" name="archivo" id="archivo" required="">');
-  });
+
 
   $(document).on("click","#subirimg",function(e){
     $("#nimg").remove();

@@ -13,8 +13,18 @@ switch($_REQUEST['action'])
   }
   echo json_encode($array);
   break;
+
   case "getStatus":
   $stmt = $dbh->prepare("select status from clientexgrupo where idcliente=".$_REQUEST["idCliente"]);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+  foreach($result as $row){
+    echo json_encode($row["status"]);
+  }
+  break;
+
+  case "setStatus":
+  $stmt = $dbh->prepare("update clientexgrupo set status=".$_REQUEST["status"]." where idcliente=".$_REQUEST["idCliente"]);
   $stmt->execute();
   $result = $stmt->fetchAll();
   foreach($result as $row){

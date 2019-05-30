@@ -25,7 +25,7 @@ var final="";
                    break;
 
                  case '1':
-                   final+= '<span class="badge badge-success">Reproduciendo</span> ';
+                   final+= '<span class="badge badge-success">Reproduciendo</span> <a href="#" data-identificacion="'+obj[i].identificacion+'" class="btn btn-danger btn-sm parar-cliente"><i class="fas fa-fw fa-stop"></i> Reiniciar</a>';
                    break;
 
                    case '2':
@@ -50,6 +50,21 @@ var id=$(this).data("identificacion");
   contentType: "application/json",
      success: function(data) {
        startMonitoring();
+     }
+  });
+});
+
+$(document).on('click','.parar-cliente',function(e){
+var id=$(this).data("identificacion");
+  //change status on server
+  $.ajax({
+  url: '../api/managegroup.php?action=stopClient&idClient='+id,
+  async: true,
+  contentType: "application/json",
+     success: function(data) {
+       startMonitoring();
+       $(".alert").show();
+       $(".alert").delay(5000).fadeOut();
      }
   });
 });
