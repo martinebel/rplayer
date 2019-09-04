@@ -1,5 +1,6 @@
 var estado=0;
 
+function initPlayer(){
 //get data
 $.ajax({
 url: 'api/player.php?action=getData&idCliente='+localStorage.getItem("idCliente"),
@@ -17,6 +18,7 @@ contentType: "application/json",
       if(obj[i].logo!=""){
       $("body").css("background-image","url('"+obj[i].logo+"')");
       $("body").css("background-size","contain");
+      $("#player").fadeIn();
     }
       window.setInterval(function(){
       startMonitoring();
@@ -25,7 +27,7 @@ contentType: "application/json",
 
    }
 });
-
+}
 
 
 function startMonitoring()
@@ -72,6 +74,19 @@ $(document).on('click','#repetir',function(e){
        }
        $("#estado").html("Reproduciendo");
        $("#repeat").hide();
+     }
+  });
+});
+
+$(document).on('click','#recargar',function(e){
+
+  //change status on server
+  $.ajax({
+  url: 'api/player.php?action=setStatus&idCliente='+localStorage.getItem("idCliente")+'&status=0',
+  async: true,
+  contentType: "application/json",
+     success: function(data) {
+       location.reload();
      }
   });
 });

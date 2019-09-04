@@ -11,6 +11,16 @@ contentType: "application/json",
       $("#grupo").append('<option value="'+obj[i].idgrupo+'">'+obj[i].nombre+'</option>');
     }
 
+    if (localStorage.getItem("keyCliente") === null) {
+
+  }
+  else {
+    $("#nombre").val(localStorage.getItem("nombreCliente"));
+    $("#grupo").val(localStorage.getItem("grupoCliente"));
+    $("#nombre").hide();
+    $("#grupo").hide();
+  }
+
    }
 });
 
@@ -39,10 +49,12 @@ contentType: "application/json",
 //register button
 $(document).on('click','#register',function(e){
   //save local variables
+  if (localStorage.getItem("keyCliente") === null) {
   localStorage.setItem("nombreCliente",$("#nombre").val());
   localStorage.setItem("grupoCliente",$("#grupo").val());
   //generate local key
   localStorage.setItem("keyCliente",jQuery.now());
+}
   //send data to server
   $.ajax({
   url: 'api/register.php?action=register&nombre='+localStorage.getItem("nombreCliente")+"&grupo="+localStorage.getItem("grupoCliente")+"&key="+localStorage.getItem("keyCliente"),
@@ -52,7 +64,10 @@ $(document).on('click','#register',function(e){
        //get client id and redirect to player
         var obj=JSON.parse(data);
        localStorage.setItem("idCliente",obj);
-       window.location.href="player.html";
+       //window.location.href="player.html";
+       $("#login").hide();
+       initPlayer();
+
      }
   });
 });

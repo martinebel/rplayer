@@ -26,6 +26,13 @@ switch($_REQUEST['action'])
   $result = $stmt->fetchAll();
   break;
 
+  case 'deleteClient':
+  $stmt = $dbh->prepare("delete from clientexgrupo where idcliente='".$_REQUEST["idClient"]."'");
+  $stmt->execute();
+  $stmt = $dbh->prepare("delete from cliente where idcliente='".$_REQUEST["idClient"]."'");
+  $stmt->execute();
+  break;
+
   case 'playAll':
   $stmt = $dbh->prepare("update clientexgrupo set  `status` =1 where idgrupo='".$_REQUEST["idGroup"]."'");
   $stmt->execute();

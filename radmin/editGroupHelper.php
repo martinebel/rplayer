@@ -53,6 +53,16 @@ if ($_POST['action']=="add")
   $stmt = $dbh->prepare($query);
   $stmt->execute();
 }
+
+if (isset($_REQUEST["action"]))
+{
+  if($_REQUEST["action"]=="delete")
+  {
+    $query.="delete from grupo where idgrupo=".$_REQUEST["id"];
+    $stmt = $dbh->prepare($query);
+    $stmt->execute();
+  }
+}
 //echo $query;
 echo '<script>window.location.href="admingroups.php";</script>';
 exit(0);

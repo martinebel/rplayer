@@ -48,7 +48,9 @@ include 'header.php';
                         <td>'.$row["nombre"].'</td>
                         <td>'.$totalcliente.'</td>
                         <td><a href="editgroup.php?id='.$row["idgrupo"].'" class="btn btn-secondary"><i class="fas fa-fw fa-edit"></i> Editar</a>
-                        <a href="managegroup.php?id='.$row["idgrupo"].'" class="btn btn-primary"><i class="fas fa-fw fa-cog"></i> Administrar</a></td>
+                        <a href="managegroup.php?id='.$row["idgrupo"].'" class="btn btn-primary"><i class="fas fa-fw fa-cog"></i> Administrar</a>
+                        <a href="editGroupHelper.php?action=delete&id='.$row["idgrupo"].'" class="btn btn-danger"><i class="fas fa-fw fa-trash"></i> Eliminar</a>
+                        </td>
                         </tr>';
 
 

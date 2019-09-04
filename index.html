@@ -24,7 +24,7 @@
 
       <div class="col-xl-6 col-lg-6 col-md-6 col-xs-12">
 
-        <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card o-hidden border-0 shadow-lg my-5" id="login">
           <div class="card-body p-0">
 
             <div class="p-5">
@@ -47,6 +47,39 @@
             </div>
           </div>
         </div>
+
+        <div class="card o-hidden border-0 shadow-lg my-5" id="player" style="display:none">
+          <div class="card-body p-0">
+
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4" id="nombreGrupo"></h1>
+              </div>
+              <form class="user">
+                <div class="form-group">
+                  <p id="estado">Esperando...</p>
+                </div>
+                <div class="form-group">
+                  <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="0"
+                    aria-valuemin="0" aria-valuemax="100" style="width:0%">
+                    </div>
+                  </div>
+                </div>
+
+                <a href="#" class="btn btn-primary btn-user btn-block" style="display:none" id="repetir">
+                  Repetir
+                </a>
+                <a href="#" class="btn btn-secondary btn-user btn-block"  id="recargar">
+                  Recargar
+                </a>
+                <audio id="archivo"></audio>
+              </form>
+
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -63,3 +96,4 @@
 <!-- Custom scripts for all pages-->
 <script src="assets/js/sb-admin-2.min.js"></script>
 <script src="assets/js/actions/register.js" type="text/javascript"></script>
+<script src="assets/js/actions/player.js" type="text/javascript"></script>
