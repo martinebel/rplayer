@@ -14,7 +14,9 @@
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <link href="../assets/css/sb-admin-2.min.css" rel="stylesheet">
-
+  <style>
+  img {width: 150px;}
+  </style>
 </head>
 
 <body class="bg-gradient-primary">
@@ -120,13 +122,13 @@
                   $codeContents = 'http://'.$ip."/".$carpeta[1].'/radmin';
                   $fileName = 'QRCode_Admin.png';
                   $pngAbsoluteFilePath = $tempDir.$fileName;
-                  QRcode::png($codeContents, $pngAbsoluteFilePath);
+                  QRcode::png($codeContents, $pngAbsoluteFilePath, QR_ECLEVEL_L, 10);
                   echo '<a href="'.$pngAbsoluteFilePath.'" target="_blank"><img src="'.$pngAbsoluteFilePath.'" /></a>';
                   echo '<p><small>Panel de Administracion<br>http://'.$ip."/".$carpeta[1].'/radmin</small></p></div><div class="col-md-6  text-center">';
                   $codeContents = 'http://'.$ip."/".$carpeta[1];
                   $fileName = 'QRCode_Clientes.png';
                   $pngAbsoluteFilePath = $tempDir.$fileName;
-                  QRcode::png($codeContents, $pngAbsoluteFilePath);
+                  QRcode::png($codeContents, $pngAbsoluteFilePath, QR_ECLEVEL_L, 10);
                   echo '<a href="'.$pngAbsoluteFilePath.'" target="_blank"><img src="'.$pngAbsoluteFilePath.'" /></a>';
                   echo '<p><small>Reproductor para Clientes<br>http://'.$ip."/".$carpeta[1].'</small></p></div></div><hr>';
                   echo '<p>No es necesario que vuelva a ingresar a esta instalación. Si lo desea, puede eliminar la carpeta <strong>install</strong> de su servidor.</p>';

@@ -72,7 +72,7 @@ foreach($result as $row){
 
       <li class="nav-item">
         <a class="nav-link" href="addgroup.php">
-          <i class="fas fa-fw fa-chart-area"></i>
+          <i class="fas fa-fw fa-plus"></i>
           <span>Crear</span></a>
       </li>
 
@@ -88,6 +88,11 @@ foreach($result as $row){
         <a class="nav-link" href="config.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Datos</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="codigoqr.php">
+          <i class="fas fa-fw fa-qrcode"></i>
+          <span>Codigos QR</span></a>
       </li>
 
 
