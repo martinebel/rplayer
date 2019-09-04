@@ -24,17 +24,12 @@ CREATE TABLE `cliente` (
   `fecha` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO `cliente` (`idcliente`, `nombre`, `identificacion`, `fecha`) VALUES
-(10, 'Test', '1567627872825', '2019-09-04 00:00:00');
 
 CREATE TABLE `clientexgrupo` (
   `idcliente` int(11) NOT NULL,
   `idgrupo` int(11) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-INSERT INTO `clientexgrupo` (`idcliente`, `idgrupo`, `status`) VALUES
-(10, 1, 0);
 
 CREATE TABLE `config` (
   `nombre` text NOT NULL,
@@ -69,12 +64,8 @@ ALTER TABLE `archivos`
   MODIFY `idarchivo` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `cliente`
-  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT;
 
 ALTER TABLE `grupo`
   MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
