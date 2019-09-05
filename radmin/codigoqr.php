@@ -49,7 +49,7 @@ img {width: 150px;}
               $host= trim($ip);
               //$host= gethostname();
               $port = ":".$_SERVER['SERVER_PORT'];
-              if($port=="80"){$port="";}
+              if($port==":80"){$port="";}
               $carpeta= explode('/',$_SERVER["REQUEST_URI"]);
                ?>
                <div class="row">

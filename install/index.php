@@ -137,7 +137,7 @@
                   $host= trim($ip);
                   //$host= gethostname();
                   $port = ":".$_SERVER['SERVER_PORT'];
-                  if($port=="80"){$port="";}
+                  if($port==":80"){$port="";}
                   $carpeta= explode('/',$_SERVER["REQUEST_URI"]);
                   echo '<p>Para ingresar al panel de administracion, vaya a <a href="http://'.$host.$port."/".$carpeta[1].'/radmin">http://'.$host.$port."/".$carpeta[1].'/radmin</a></p>';
                   echo '<p>Sus clientes deben ingresar al reproductor en <a href="http://'.$host.$port."/".$carpeta[1].'">http://'.$host.$port."/".$carpeta[1].'</a></p>';
