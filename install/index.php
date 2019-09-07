@@ -1,4 +1,4 @@
-
+<?php require '../config.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -40,7 +40,7 @@
 
                 include('../api/phpqrcode/qrlib.php');
                 try {
-                  $dbh = new PDO('mysql:host=localhost;dbname=information_schema', 'root', '');
+                  $dbh = new PDO('mysql:host='.$host.';dbname=information_schema', $user, $password);
                 } catch(Exception $e) {
                   exit('<p class="text-danger text-center"><i class="fa fa-times"></i> Error conectando al Motor de Base de Datos</p>');
                 }
@@ -106,7 +106,7 @@
                   MODIFY `idgrupo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;") or die(print_r($dbh->errorInfo()));
 
                   try {
-                    $dbh = new PDO('mysql:host=localhost;dbname=rplayer', 'root', '');
+                    $dbh = new PDO('mysql:host='.$host.';dbname='.$database, $user, $password);
                   } catch(Exception $e) {
                     exit('<p class="text-danger text-center"><i class="fa fa-times"></i> No se puede conectar a la base de datos</p>');
                   }
