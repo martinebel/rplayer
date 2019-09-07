@@ -44,7 +44,7 @@
                 } catch(Exception $e) {
                   exit('<p class="text-danger text-center"><i class="fa fa-times"></i> Error conectando al Motor de Base de Datos</p>');
                 }
-                $dbh->query("CREATE DATABASE IF NOT EXISTS `rplayer` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+                $dbh->query("DROP DATABASE IF EXISTS  `rplayer`; CREATE DATABASE IF NOT EXISTS `rplayer` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
                   USE `rplayer`;
 
                   CREATE TABLE `archivos` (
