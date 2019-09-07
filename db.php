@@ -6,7 +6,6 @@ global $dbh;
  // connection to the database
  try {
  $dbh = new PDO('mysql:host=localhost;dbname=rplayer', 'root', '');
- //$dbh = new PDO('mysql:host=localhost;dbname=recticar', 'root', '');
  } catch(Exception $e) {
   exit("Error conectando al Servidor");
  }
