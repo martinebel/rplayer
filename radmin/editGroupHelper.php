@@ -58,7 +58,7 @@ if (isset($_REQUEST["action"]))
 {
   if($_REQUEST["action"]=="delete")
   {
-    $query.="delete from grupo where idgrupo=".$_REQUEST["id"];
+    $query="delete from grupo where idgrupo=".$_REQUEST["id"];
     $stmt = $dbh->prepare($query);
     $stmt->execute();
   }
